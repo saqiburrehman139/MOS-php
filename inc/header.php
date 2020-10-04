@@ -12,7 +12,7 @@ $query="SELECT * from requester_data WHERE email='".$email."'";
 $data=mysqli_query($conn,$query);
 $result=mysqli_fetch_assoc($data);
 if(isset($_REQUEST['update'])){
-if($_REQUEST['rname']==''){
+if($_REQUEST['remail']==''){
     $msg="<div class='alert alert-warning'>Fill All Fields</div>";
 }else{
     $remail=$_REQUEST['remail'];

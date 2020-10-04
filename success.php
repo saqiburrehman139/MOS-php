@@ -47,3 +47,4 @@ value='print' onclick='window.print()'</form></td>
 </table>
 </div>";
 ?>
+<?php include('inc/footer.php');?>
