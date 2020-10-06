@@ -7,27 +7,10 @@ $email=$_SESSION['email'];
 }else{
     echo"<script>location.href='adminlogin.php'</script>";
 }
-$query="SELECT * from requester_data WHERE email='".$email."'";
+$query="SELECT * from requester_data";
 $data=mysqli_query($conn,$query);
 $result=mysqli_fetch_assoc($data);
-if(isset($_REQUEST['update'])){
-if($_REQUEST['rname']==''){
-    $msg="<div class='alert alert-warning'>Fill All Fields</div>";
-}else{
-    $remail=$_REQUEST['remail'];
-    $rname=$_REQUEST['rname'];
-    $query1="UPDATE `new_mos`.`requester_data` SET `rname` = '$rname' WHERE `email` = '$remail';";
-   $data1=mysqli_query($conn,$query1);
-   if($data1){
-       $msg="<div class='alert alert-success'>Updated</div>";
-   }else{
-    $msg="<div class='alert alert-danger'>Not Updated</div>";
-   }
-}
-}
-else{
 
-}
 if(isset($_REQUEST['logout'])){
     session_unset();
     session_destroy();
@@ -73,28 +56,64 @@ fixed-md-nowrap p-1 shadow'>
         </ul>
         </div>
        </nav><!-- End Side bar  -->
-       <!-- Start profile area  -->
-       <div class='col-sm-6 mt-4'>
-        <form action="" method='get' class='mt-4'>
-         <div class='form-group'>
-         <label for="email">Email</label>
-         <input type="email" class='form-control' value='<?php echo $_SESSION['email']; ?>' name='remail' id='remail' readonly>
-         </div>
-         <div class='form-group'>
-         <label for="Name">Name</label>
-         <input type="text" class='form-control' value='<?php echo $result['rname']; ?>' name='rname' id='rname'>
-         </div>
-         <!-- <div class='form-group'>
-         <label for="Password">Password</label>
-         <input type="password" class='form-control' value='<?php echo $result['pass']; ?>' name='pass' id='rpass'>
-         </div> -->
-         <input type="submit" value="Update" name='update' class='btn btn-primary'>
-         <?php if(isset($msg)){echo $msg;}?>
-        </form>
-       
+       <!-- Start dashboard 2nd column  -->
+       <div class='col-sm-9 col-md-10'>
+       <div class="row text-center mx-5">
+        <div class="col-sm-4 mt-5">
+         <div class='card text-white bg-primary mb-3'style='max-width:18rem;'>
+          <div class='card-header'>Requests Received </div>
+           <div class='card-body'>
+            <div class='card-title'> 52 </div>
+            <a class='btn text-white' href="#">View</a>
+          </div>
+         </div>        
+        </div>
+        <div class="col-sm-4 mt-5">
+         <div class='card text-white bg-info mb-3'style='max-width:18rem;'>
+          <div class='card-header'>Assigned Work </div>
+           <div class='card-body'>
+            <div class='card-title'> 10 </div>
+            <a class='btn text-white' href="#">View</a>
+          </div>
+         </div>        
+        </div>
+        <div class="col-sm-4 mt-5">
+         <div class='card text-white bg-success mb-3'style='max-width:18rem;'>
+          <div class='card-header'>No Of Tecnitions </div>
+           <div class='card-body'>
+            <div class='card-title'> 2 </div>
+            <a class='btn text-white' href="#">View</a>
+          </div>
+         </div>        
+        </div>
+        </div>
+        <div class='mx-5 mt-5 text-center'>
+        <p class='bg-dark text-white p-2'>List Of Requesters</p>
+<table class='table'>
+<thead>
+<tr>
+<th>Requester ID</th>
+<th>Name</th>
+<th>Email</th>
+</tr>
+</thead>
+<tbody>
+<?php
+        {while($result=mysqli_fetch_assoc($data)){
+        echo "
+<tr>
+<td>".$result['id']."</td>
+<td>".$result['rname']."</td>
+<td>".$result['email']."</td>
+</tr>
+</tbody>
+";
+        }}
+        ?>
+        </table>
        </div>
-        
-       <!-- end profile area -->
+       </div>
+       <!-- end dashboard 2nd column -->
       </div>
      
      </div>
