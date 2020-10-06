@@ -314,7 +314,7 @@ include('db.php');
     <span>&copy;2020 Moosa Online Shop </span>
     </div>
     <!-- End 2nd column -->
-    <div class='col-md-4'><a href="" style='color:white; text-decoration:none;'>Admin login</a></div>
+    <div class='col-md-4'><a href="admin/adminlogin.php" style='color:white; text-decoration:none;'>Admin login</a></div>
     </div>
     </div>
     </div>
