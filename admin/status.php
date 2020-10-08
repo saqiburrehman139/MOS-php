@@ -1,5 +1,5 @@
 <?php
-define('TITLE','Work Report');
+define('TITLE','Status');
 
 ?>
 

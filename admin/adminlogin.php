@@ -1,5 +1,6 @@
 <?php
 session_start();
+define('TITLE','Admin Login');
 include('../db.php');
 if(!isset($_SESSION['is_login'])){
 if(isset($_REQUEST['signin'])){
