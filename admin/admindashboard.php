@@ -3,7 +3,8 @@ define('TITLE','Dashboard');
 include('../db.php');
 session_start();
 if(isset($_SESSION['is_login'])){
-$email=$_SESSION['email'];
+$admin_email=$_SESSION['email'];
+echo"<script>location.href='admindashboard.php'</script>";
 }else{
     echo"<script>location.href='adminlogin.php'</script>";
 }
@@ -11,11 +12,8 @@ $query="SELECT * from requester_data";
 $data=mysqli_query($conn,$query);
 $result=mysqli_fetch_assoc($data);
 
-if(isset($_REQUEST['logout'])){
-    session_unset();
-    session_destroy();
-    echo"<script>location.href='adminlogin.php'</script>";
-}
+
+
 ?>
    <!-- Start sidebar -->
    <?php include('inc/header.php'); ?>

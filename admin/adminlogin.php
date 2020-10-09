@@ -9,7 +9,7 @@ $admin_pass=mysqli_real_escape_string($conn,trim($_REQUEST['pass']));
 $query="SELECT admin_email, admin_pass FROM admin_login WHERE admin_email='".$admin_email."' AND admin_pass='".$admin_pass."' limit 1";
 $result=mysqli_query($conn,$query);
 if($result->num_rows == 1){
-    $_SESSION['is_login']= true;
+     $_SESSION['is_login']= true;
     $_SESSION['email']=$admin_email;
     $msg="<div class='alert alert-success mt-4'>Login Success</div>";
     echo"<script>location.href='admindashboard.php'</script>";

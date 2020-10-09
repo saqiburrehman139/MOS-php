@@ -1,3 +1,13 @@
+<?php
+if(isset($_SESSION['is_adminlogin'])){
+$admin_email=$_SESSION['email'];
+} 
+if(isset($_REQUEST['logout'])){
+    session_unset();
+    session_destroy();
+    echo"<script>location.href='adminlogin.php'</script>";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
